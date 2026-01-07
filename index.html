@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galactic Cat Focus | 宇宙猫の集中タイマー</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Layers -->
+    <div class="space-background">
+        <div id="stars-container"></div>
+        <div class="nebula-overlay"></div>
+        <!-- Chill Corner Floating Objects -->
+        <div class="floating-zone">
+            <div class="floater f-1"><i data-lucide="coffee"></i></div>
+            <div class="floater f-2"><i data-lucide="book-open"></i></div>
+            <div class="floater f-3"><i data-lucide="music"></i></div>
+            <div class="floater f-4"><i data-lucide="star"></i></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+
+    <main class="app-container">
+
+        <!-- Header / Status -->
+        <header class="glass-header">
+            <div class="logo-area">
+                <i data-lucide="cat" class="logo-icon"></i>
+                <span class="logo-text">NEKO FOCUS</span>
+            </div>
+            <div class="status-indicators">
+                <div class="status-item">
+                    <i data-lucide="flame"></i>
+                    <span id="streak-display">0 DAY STREAK</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Timer Interface -->
+        <section class="timer-section">
+            <div class="orbit-timer-container">
+                <!-- Liquid Effect -->
+                <div class="liquid-mask">
+                    <div class="liquid-wave" id="liquid-wave"></div>
+                </div>
+
+                <!-- SVG Ring -->
+                <svg class="timer-ring-svg" width="340" height="340" viewBox="0 0 340 340">
+                    <defs>
+                        <linearGradient id="gradient-arc" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:var(--color-accent-1);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:var(--color-accent-2);stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!-- Background Circle -->
+                    <circle class="ring-bg" cx="170" cy="170" r="140"></circle>
+                    <!-- Progress Circle -->
+                    <circle class="ring-progress" cx="170" cy="170" r="140" stroke="url(#gradient-arc)"></circle>
+                </svg>
+
+                <!-- Center Content -->
+                <div class="timer-center">
+                    <div class="timer-time" id="time-display">25:00</div>
+                    <div class="timer-label" id="mode-display">FOCUS</div>
+                </div>
+
+                <!-- Orbiting Element -->
+                <div class="orbit-path" id="orbit-path">
+                    <div class="orbit-planet">
+                        <i data-lucide="moon" class="planet-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="controls-area">
+                <button id="btn-toggle" class="btn-primary" aria-label="Start Timer">
+                    <span class="btn-text">START MISSION</span>
+                    <i data-lucide="play" class="btn-icon-right"></i>
+                </button>
+
+                <div class="secondary-controls">
+                    <button id="btn-reset" class="btn-ghost" aria-label="Reset Timer">
+                        <i data-lucide="rotate-ccw"></i>
+                    </button>
+                    <button id="btn-mode" class="btn-ghost" aria-label="Switch Mode">
+                        <i data-lucide="coffee"></i>
+                    </button>
+                    <button id="btn-sound" class="btn-ghost" aria-label="Toggle Sound">
+                        <i data-lucide="volume-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

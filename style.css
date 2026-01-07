@@ -1,0 +1,491 @@
+:root {
+    /* --- Modern Space Palette --- */
+    --color-bg-deep: #050510;
+    --color-bg-surface: rgba(20, 20, 35, 0.6);
+    --color-text-main: #FFFFFF;
+    --color-text-muted: #8F9BB3;
+
+    --color-accent-1: #7F5AF0;
+    /* Vivid Purple */
+    --color-accent-2: #2CB67D;
+    /* Cyber Green */
+    --color-accent-alert: #ff3366;
+    /* Neon Red */
+    --color-highlight: #FFFFFE;
+
+    --font-heading: 'Outfit', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--color-bg-deep);
+    color: var(--color-text-main);
+    font-family: var(--font-heading);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: none;
+    /* Custom cursor */
+}
+
+/* --- Layout --- */
+.app-container {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+/* --- Backgrounds --- */
+.space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#stars-container {
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle var(--duration) ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+}
+
+.nebula-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 10% 20%, rgba(127, 90, 240, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(44, 182, 125, 0.1) 0%, transparent 40%);
+    filter: blur(40px);
+}
+
+/* --- Floating "Chill" Objects --- */
+.floating-zone {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.floater {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    animation: float-drift 20s ease-in-out infinite alternate;
+}
+
+.f-1 {
+    top: 20%;
+    left: 15%;
+    animation-duration: 25s;
+    font-size: 2rem;
+}
+
+.f-2 {
+    top: 70%;
+    left: 85%;
+    animation-duration: 32s;
+    font-size: 1.5rem;
+    animation-delay: -5s;
+}
+
+.f-3 {
+    top: 80%;
+    left: 20%;
+    animation-duration: 28s;
+    font-size: 1.8rem;
+    animation-delay: -12s;
+}
+
+.f-4 {
+    top: 15%;
+    left: 80%;
+    animation-duration: 40s;
+    font-size: 1.2rem;
+    animation-delay: -8s;
+}
+
+@keyframes float-drift {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(30px, -50px) rotate(15deg);
+    }
+}
+
+/* --- Glass Header --- */
+.glass-header {
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+}
+
+.status-indicators {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Timer Section --- */
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+}
+
+.orbit-timer-container {
+    position: relative;
+    width: 340px;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Liquid Water Effect --- */
+.liquid-mask {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 1;
+    /* Behind text but visible */
+    /* background: rgba(0,0,0,0.2); Optional darkness */
+}
+
+.liquid-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* controlled by JS */
+    background: linear-gradient(to top, rgba(127, 90, 240, 0.4), rgba(44, 182, 125, 0.2));
+    transition: height 1s linear;
+    box-shadow: 0 0 40px rgba(127, 90, 240, 0.3);
+}
+
+.liquid-wave::before,
+.liquid-wave::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 40%;
+    /* Rounded square */
+    animation: wave-rotate 10s linear infinite;
+}
+
+.liquid-wave::after {
+    background: rgba(255, 255, 255, 0.08);
+    /* slightly brighter */
+    border-radius: 45%;
+    animation: wave-rotate 15s linear infinite reverse;
+    top: -60%;
+}
+
+@keyframes wave-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Adjust Timer Ring to sit on top */
+.timer-ring-svg {
+    transform: rotate(-90deg);
+    overflow: visible;
+    position: relative;
+    z-index: 2;
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.05);
+    stroke-width: 12;
+}
+
+.ring-progress {
+    fill: none;
+    stroke-width: 12;
+    stroke-linecap: round;
+    stroke-dasharray: 879;
+    /* 2 * PI * 140 */
+    stroke-dashoffset: 0;
+    /* Starts full */
+    transition: stroke-dashoffset 1s linear;
+    filter: url(#glow);
+}
+
+/* Center Text */
+.timer-center {
+    position: absolute;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-time {
+    font-family: var(--font-mono);
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 0 0 20px rgba(127, 90, 240, 0.5);
+}
+
+.timer-label {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+/* Orbit Animation */
+.orbit-path {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: rotate-orbit 60s linear infinite;
+    pointer-events: none;
+}
+
+.orbit-planet {
+    position: absolute;
+    top: 50%;
+    /* Center vertically */
+    left: 100%;
+    /* Position at right edge (start/end of circle) */
+    transform: translate(-50%, -50%);
+    /* Center the item on the line */
+    /* Due to -90deg rotation of container, this starting point might need adjustment logic 
+       but keeping it simple: we rotate the container so the child just sits on the radius */
+
+    width: 40px;
+    height: 40px;
+    background: var(--color-bg-deep);
+    border: 2px solid var(--color-accent-1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 15px var(--color-accent-1);
+    color: var(--color-accent-1);
+}
+
+@keyframes rotate-orbit {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* --- Controls --- */
+.controls-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+button {
+    cursor: none;
+    /* Using custom cursor */
+    border: none;
+    outline: none;
+    font-family: var(--font-heading);
+    transition: all 0.3s var(--ease-elastic);
+}
+
+.btn-primary {
+    background: var(--color-text-main);
+    color: var(--color-bg-deep);
+    padding: 1rem 2.5rem;
+    border-radius: 99px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+.secondary-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--color-text-muted);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-main);
+    transform: translateY(-2px);
+}
+
+.btn-ghost.active {
+    color: var(--color-accent-2);
+    border-color: var(--color-accent-2);
+    background: rgba(44, 182, 125, 0.1);
+}
+
+.paused .orbit-path {
+    animation-play-state: paused;
+}
+
+/* --- Custom Cursor --- */
+#cursor-dot,
+#cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-text-main);
+    border-radius: 50%;
+}
+
+#cursor-ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Classes applied by JS on hover */
+.hover-active #cursor-ring {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: var(--color-accent-1);
+}
+
+/* --- Break Mode Overrides --- */
+body.mode-break {
+    --color-accent-1: var(--color-accent-2);
+    /* Switch purple to green */
+}
+
+body.mode-break .timer-time {
+    text-shadow: 0 0 20px rgba(44, 182, 125, 0.5);
+}
+
+body.mode-break .orbit-planet {
+    box-shadow: 0 0 15px var(--color-accent-2);
+}
