@@ -1,27 +1,51 @@
-# Galactic Cat Focus (宇宙猫タイマー)
+# 🐱 Galactic Cat Focus
 
-究極の集中力を引き出す、宇宙テーマのポモドーロタイマーです。
+![Version](https://img.shields.io/badge/version-1.0.0-blueviolet)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Tech](https://img.shields.io/badge/tech-HTML%20%7C%20CSS%20%7C%20JS-yellow)
 
-## ✨ 特徴 (Features)
+**Galactic Cat Focus** is a space-themed Pomodoro timer designed to induce ultimate concentration.
+Escape the gravity of distractions and float into a zone of productivity with ambient soundscapes and immersive visuals.
 
-*   **Liquid Timer (リキッドタイマー)**: 時間の経過とともに、リング内の「宇宙の水」が徐々に減っていく美しいアニメーション。
-*   **Generative Ambient Music (生成アンビエント音楽)**: Web Audio APIを使用し、ブラウザ内でリアルタイムに生成される「二度と同じ演奏はされない」無限の環境音。
-*   **Chill Corner (チルコーナー)**: 無重力空間に漂うコーヒーや本などの癒やしオブジェクト。
-*   **Interactive Design (インタラクティブ)**: マウスに追従するカスタムカーソルと、心地よいクリック音（シンセサイザー音）。
+![Screenshot](./screenshot.png) <!-- Conceptual placeholder if user adds one later -->
 
-## 🛠️ 技術スタック (Tech Stack)
+---
 
-*   **HTML5**: セマンティックなマークアップ
-*   **CSS3**: モダンなCSS変数、Animations、Glassmorphism
-*   **Vanilla JavaScript (ES6+)**: クラスベースの設計、外部ライブラリ依存なし（アイコン用のLucideのみ）
+## ✨ Features
 
-## 🚀 使い方 (Usage)
+### ⏳ Liquid Timer
+A visual representation of time passing. Instead of a boring countdown, watch as the "cosmic water" level within the ring slowly depletes, powered by a custom wave animation.
 
-1.  `index.html` をブラウザで開きます。
-2.  **START MISSION** ボタンをクリックして25分間の集中セッションを開始します。
-3.  **音量アイコン** をクリックすると、集中用アンビエント音楽が流れます。
-4.  時間が来ると心地よいアラームで通知され、自動的に休憩モード（緑色のテーマ）に切り替わります。
+### 🎵 Generative Ambient Music
+No looped MP3s here. The application uses the **Web Audio API** to generate real-time ambient soundscapes directly in your browser. Every session provides a unique sonic experience, ensuring you never get tired of the background noise.
 
-## 🎨 クレジット
+### 🪐 Chill Corner
+Relax in zero gravity. The "Chill Corner" features floating elements like coffee, books, and music notes that drift aimlessly in the vacuum of space, adding to the relaxing atmosphere.
+
+### 🖱️ Interactive Design
+*   **Custom Cursor**: A ring-and-dot cursor that follows your movement with smooth inertia.
+*   **Satisfying feedback**: Every interaction is accompanied by subtle, synthesized sound effects.
+
+---
+
+## 🛠️ Tech Stack
+
+*   **HTML5**: Semantic structure.
+*   **CSS3**: Modern CSS variables, glassmorphism effects, and keyframe animations.
+*   **Vanilla JavaScript**: Built with ES6+ classes. No heavy frameworks—just pure, performant code.
+    *   *External Dependency*: [Lucide](https://lucide.dev/) for beautiful, lightweight icons.
+
+---
+
+## 🚀 Usage
+
+1.  **Launch**: Open `index.html` in any modern web browser.
+2.  **Start**: Click the **START MISSION** button to begin a 25-minute focus session.
+3.  **Ambience**: Click the **Volume Icon** to toggle the generative ambient music.
+4.  **Flow**: When the timer reaches zero, a gentle alarm will sound, and the interface will automatically switch to "Break Mode" (Green Theme).
+
+---
+
+## 🎨 Credits
 
 Designed & Coded with 💜 for Cat Lovers and Space Explorers.
